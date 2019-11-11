@@ -1,6 +1,5 @@
 package com.eee.cowboysfight;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -43,11 +42,12 @@ public class CowboyFightSimulator {
     static void shoot(String shooterName, List<Cowboy> cowboys, int damage) {
         int index = rand.nextInt(cowboys.size());
         Cowboy shootTo = cowboys.get(index);
-        shootTo.health -= damage;
-        if (shootTo.health <= 0) {
-            cowboys.remove(index);
+        synchronized (shootTo) {
+            shootTo.health -= damage;
+            if (shootTo.health <= 0) {
+                cowboys.remove(index);
+            }
         }
-
         System.out.println(String.format(
             "Cowboy `%s` makes damage `%s` to `%s` and health left `%s`.",
             shooterName,

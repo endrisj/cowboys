@@ -6,36 +6,6 @@ import java.util.List;
 
 public class CowboyRepository {
 
-    /*
-[
-    {
-      "name": "John",
-      "health": 10,
-      "damage": 1
-    },
-    {
-      "name": "Bill",
-      "health": 8,
-      "damage": 2
-    },
-    {
-      "name": "Sam",
-      "health": 10,
-      "damage": 1
-    },
-    {
-      "name": "Peter",
-      "health": 5,
-      "damage": 3
-    },
-    {
-      "name": "Philip",
-      "health": 15,
-      "damage": 1
-    }
-]
- */
-
     public static List<Cowboy> getAll() {
         List<Cowboy> cowboys = Collections.synchronizedList(new ArrayList<Cowboy>());
         cowboys.add(new Cowboy("John", 10, 1));
